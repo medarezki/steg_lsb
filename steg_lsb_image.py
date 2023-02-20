@@ -2,7 +2,6 @@ import cv2
 import array as arr
 import numpy as np
 
-
 def mask(entity_, mask_):
 
     ret0_=np.zeros((entity_.shape[0], entity_.shape[1]), np.uint8)
