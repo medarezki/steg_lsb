@@ -47,18 +47,9 @@ mask__=7
 img = cv2.imread('vector1.jpg')
 message = cv2.imread('Image.jpg')
 
-
-red_codedi= img[:,:,0]
-green_codedi= img[:,:,1]
-blue_codedi= img[:,:,2]
-
-red_codedm= message[:,:,0]
-green_codedm= message[:,:,1]
-blue_codedm= message[:,:,2]
-
-image_result= cv2.merge((combine(mask(red_codedi,mask1), mask(red_codedm,mask2)),
-                         combine(mask(green_codedi,mask1), mask(green_codedm,mask2)),
-                         combine(mask(blue_codedi,mask1), mask(blue_codedm,mask2))))
+image_result= cv2.merge((combine(mask(img[:,:,0],mask1), mask(message[:,:,0],mask2)),
+                         combine(mask(img[:,:,1],mask1), mask(message[:,:,1],mask2)),
+                         combine(mask(img[:,:,2],mask1), mask(message[:,:,2],mask2))))
 
 extracted= cv2.merge((extract(image_result[:,:,0],mask__),
                               extract(image_result[:,:,1],mask__),
