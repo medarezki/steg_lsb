@@ -1,2 +1,2 @@
 # steg_lsb
-Steganography (LSB)
+Example of information dissimulation with steganography: LSB method
