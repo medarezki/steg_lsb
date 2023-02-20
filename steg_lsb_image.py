@@ -1,5 +1,4 @@
 import cv2
-import array as arr
 import numpy as np
 
 def mask(entity_, mask_):
