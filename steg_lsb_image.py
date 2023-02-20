@@ -41,21 +41,21 @@ def extract(support2_, mask__):
     return ret2_
 
     
-mask1=248
-mask2=7
-mask__=7
+masks=[248, 7, 7]
+
 img = cv2.imread('vector1.jpg')
 message = cv2.imread('Image.jpg')
 
-image_result= cv2.merge((combine(mask(img[:,:,0],mask1), mask(message[:,:,0],mask2)),
-                         combine(mask(img[:,:,1],mask1), mask(message[:,:,1],mask2)),
-                         combine(mask(img[:,:,2],mask1), mask(message[:,:,2],mask2))))
+image_result= cv2.merge((combine(mask(img[:,:,0],masks[0]), mask(message[:,:,0],masks[1])),
+                         combine(mask(img[:,:,1],masks[0]), mask(message[:,:,1],masks[1])),
+                         combine(mask(img[:,:,2],masks[0]), mask(message[:,:,2],masks[1]))))
 
-extracted= cv2.merge((extract(image_result[:,:,0],mask__),
-                              extract(image_result[:,:,1],mask__),
-                                      extract(image_result[:,:,2],mask__)))
+extracted= cv2.merge((extract(image_result[:,:,0],masks[2]),
+                      extract(image_result[:,:,1],masks[2]),
+                      extract(image_result[:,:,2],masks[2])))
 
 horizontal_disp= np.concatenate((image_result, extracted), axis=1)
+
 cv2.imshow('Image / Message', horizontal_disp)
 
 cv2.waitKey(0)
