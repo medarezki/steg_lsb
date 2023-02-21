@@ -2,20 +2,12 @@ import cv2
 import numpy as np
 
 def mask(entity_, mask_):
-
-    ret0_=np.zeros((entity_.shape[0], entity_.shape[1]), np.uint8)
     
-    for x in range(entity_.shape[0]):
-        for y in range(entity_.shape[1]):
-            ret0_[x,y]= np.bitwise_and(mask_, entity_[x,y].astype(int));
-       
-
-    return ret0_
+    return np.bitwise_and(mask_, entity_.astype(int))
 
 def combine(support_, message_):
 
     ret_=np.zeros((support_.shape[0], support_.shape[1]), np.uint8)
-    
     
     for x in range(support_.shape[0]):
         for y in range(support_.shape[1]):
@@ -27,15 +19,12 @@ def combine(support_, message_):
 def extract(support2_, mask__):
 
     ret2_=np.zeros((support2_.shape[0], support2_.shape[1]), np.uint8)
-    
 
     for x in range(support2_.shape[0]):
         for y in range(support2_.shape[1]):
             ret2_[x,y]= np.left_shift(
                 np.bitwise_and(mask__,support2_[x,y].astype(int)),5)
-        
-            
-    
+     
     return ret2_
 
     
